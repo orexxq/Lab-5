@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+
+<body>
+    <h2>File Upload</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="fileInput" />
+        <button type="button" onclick="uploadFile()">Upload</button>
+    </form>
+
+    <script>
+        function uploadFile() {
+            const formData = new FormData();
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            formData.append('image', file);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+
+</html>

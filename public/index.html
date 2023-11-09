@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>ToDoList</title>
+</head>
+
+<body>
+    <section>
+        <div class="wrapper_todo">
+            <h1>ToDoList</h1>
+            <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; margin: 0 auto;">
+                <button onclick="(() => {document.querySelector('.modal-wrapper').style.display = 'flex'})()"
+                    type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: rgba(0, 0, 0, 1);">
+                        <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="wrapper_todo__items"></div>
+        </div>
+        <div class="modal-wrapper">
+            <div class="modal-window">
+                <h2 class="form-title">Task Form</h2>
+                <form action="/api/list" method="post">
+                    <label for="title" class="form-label">Title Task:</label>
+                    <input type="text" id="title" name="title" class="form-input" required>
+
+                    <label for="description" class="form-label">Description Task:</label>
+                    <textarea id="description" name="description" rows="4" class="form-input" required></textarea>
+
+                    <div class="form-submit">
+                        <button type="submit" value="Submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script defer src="script.js"></script>
+</body>
+
+</html>
